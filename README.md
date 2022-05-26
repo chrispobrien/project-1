@@ -8,10 +8,13 @@ https://chrispobrien.github.io/project-1/
 
 User Story: As a user, I want to ... so ...
 
+```
 AS A reader
 I WANT to browse the New York Times bestseller lists by category and date
 SO THAT I may select a book to read
+```
 
+```
 GIVEN a bestseller dashboard with form inputs
 WHEN I search for a date and category
 THEN I am presented with book titles and covers for that category list on or after that date
@@ -21,6 +24,7 @@ WHEN I click on a buy link
 THEN I am presented with a drop-down list of buying options
 WHEN I click on a borrow link
 THEN I am referred to the New York Public Library
+```
 
 2. Spike: Research UI framework
 
