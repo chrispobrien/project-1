@@ -4,25 +4,30 @@ var listEl = document.querySelector('#listEl');
 var searchButtonEl = document.querySelector('#searchButton');
 var booksEl = document.querySelector('#books');
 
+// Template of local object to store info
 var localSourceData = {
+  // Array of bestseller lists available from NYT
   lists:[],
+  // Results object, includes .books array of books on the list
   bookResults: {},
   selected: 0,
   date: ''
 };
 
-var onClickSearch = function () {
-
-}
-
-booksEl.addEventListener('click', function(target) {
-  
+// On click of books area, check if it is a book and refer to book page
+booksEl.addEventListener('click', function(event) {
+  let bookEl = event.target.closest('.book');
+  console.log(bookEl);
+  if (bookEl) {
+    let Url = './book.html?isbn13=' + bookEl.getAttribute('data-isbn13');
+    window.location.href = Url;
+  }
 });
 
+// On click of Search button, load form values to localSourceData
 searchButtonEl.addEventListener('click', function() {
   localSourceData.date = moment(dateEl.value).format('YYYY-MM-DD');
   localSourceData.selected = listEl.value;
-  //console.log(localSourceData.date, localSourceData.selected);
   getBooks();
 });
 
@@ -30,6 +35,7 @@ searchButtonEl.addEventListener('click', function() {
 var populateList = function() {
   listEl.innerHTML = '';
   for (i=0;i<localSourceData.lists.length;i++) {
+    // Some lists are very old, show only lists updated in the past year
     let newestPublishedDate = moment(localSourceData.lists[i].newest_published_date);
     if (newestPublishedDate > (moment().subtract(1,'years'))) {
       let optionEl = document.createElement("option");
@@ -55,13 +61,15 @@ var populateBooks = function() {
   for (let i=0;i<localSourceData.bookResults.books.length;i++) {
     let newBook = document.createElement("div");
     newBook.setAttribute("class","small-6 medium-4 large-3 cell book");
+    newBook.setAttribute("data-isbn13",localSourceData.bookResults.books[i].primary_isbn13);
     let bookTitle = document.createElement("h5");
     bookTitle.textContent = localSourceData.bookResults.books[i].title;
     bookTitle.setAttribute("class","book-title")
     let newRef = document.createElement("img");
     newRef.setAttribute("src",localSourceData.bookResults.books[i].book_image);
     newRef.setAttribute("alt",localSourceData.bookResults.books[i].title + " book cover");
-    newRef.setAttribute("height","20");
+    newRef.setAttribute("width","174");
+    newRef.setAttribute("height","268");
     newBook.appendChild(bookTitle);
     newBook.appendChild(newRef);
     booksEl.appendChild(newBook);
