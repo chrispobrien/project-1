@@ -1,6 +1,9 @@
 # project-1
 Project 1 for Coding Bootcamp
 
+https://chrispobrien.github.io/project-1/
+
+
 1. Spike: Research APIs
 
 User Story: As a user, I want to ... so ...
@@ -10,6 +13,10 @@ As a user, I want to see historic 311 calls for my neighborhood, so
 2. Spike: Research UI framework
 
 Materialize? Sort of clumsy but not too bad.
+
+I can't figure out how to use Material UI Kit
+
+Using foundation
 
 3. Create repository in git, give access to your teammates
 

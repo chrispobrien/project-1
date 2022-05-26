@@ -38,6 +38,7 @@ var populateList = function() {
       listEl.appendChild(optionEl);
     }
   };
+  listEl.value = localSourceData.selected;
 }
 
 // Load books to the main window
