@@ -29,9 +29,31 @@ var showBook = function() {
     buyLink.setAttribute("class","button");
     buyLink.textContent = "Buy";
     mainEl.appendChild(buyLink);
+    let borrowLink = document.createElement("a");
+    var NYPLUrl = "https://browse.nypl.org/iii/encore/search/C__S"
+        + isbn13 + "__Orightresult__U?lang=eng&suite=def";
+    borrowLink.setAttribute("href",NYPLUrl);
+    borrowLink.setAttribute("class","button");
+    borrowLink.textContent = "Borrow";
+    mainEl.appendChild(borrowLink);
 
 
 };
+
+// Inserts a script function to call Google Books API - callback function handleGBResponse
+var addGoogleBooks = function() {
+    let gbUrl = "https://books.google.com/books?jscmd=viewapi&bibkeys=ISBN:"
+        + isbn13 + "&callback=handleGBResponse";
+    let gbEl = document.createElement("script");
+    gbEl.setAttribute("src",gbUrl);
+    gbEl.setAttribute("type","text/javascript");
+    document.querySelector("body").appendChild(gbEl);
+};
+
+// Has some interesting data but mostly links
+var handleGBResponse = function(data) {
+    console.log(data);
+}
 
 // So this localStorage should be filled whenever user browses to book page
 var loadLocalSourceData = function() {
@@ -41,6 +63,7 @@ var loadLocalSourceData = function() {
     };
     book = localSourceData.bookResults.books.findIndex(books => books.primary_isbn13 === isbn13);
     showBook();
+    addGoogleBooks();
 };
 
 loadLocalSourceData();
