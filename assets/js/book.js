@@ -30,15 +30,22 @@ var showBook = function() {
     buyLink.textContent = "Buy";
     mainEl.appendChild(buyLink);
     let borrowLink = document.createElement("a");
-    var NYPLUrl = "https://browse.nypl.org/iii/encore/search/C__S"
+    let NYPLUrl = "https://browse.nypl.org/iii/encore/search/C__S"
         + isbn13 + "__Orightresult__U?lang=eng&suite=def";
     borrowLink.setAttribute("href",NYPLUrl);
     borrowLink.setAttribute("class","button");
     borrowLink.textContent = "Borrow";
     mainEl.appendChild(borrowLink);
-
-
+    let viewerEl = document.createElement("div");
+    viewerEl.setAttribute("style","width: 600px; height: 500px");
+    viewerEl.setAttribute("id","viewerCanvas");
+    mainEl.appendChild(viewerEl);
 };
+
+var initViewer = function() {
+    let viewer = new google.books.DefaultViewer(document.querySelector("#viewerCanvas"));
+    viewer.load('ISBN:'+isbn13);
+}
 
 // Inserts a script function to call Google Books API - callback function handleGBResponse
 var addGoogleBooks = function() {
@@ -57,6 +64,8 @@ var handleGBResponse = function(data) {
 
 // So this localStorage should be filled whenever user browses to book page
 var loadLocalSourceData = function() {
+    google.books.load();
+    google.books.setOnLoadCallback(initViewer);
     let lsd = localStorage.getItem("nyt");
     if (lsd) {
       localSourceData = JSON.parse(lsd);
