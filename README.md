@@ -59,7 +59,25 @@ As a reader, I want to view a list of New York Times Bestsellers by date, SO I m
 
 MaterialUI
 UIKit Apple
+Tailwind
 
 HTML
 CSS
 JS
+
+design
+monitoring : make sure your app is working
+
+software development processes :
+  waterfall : plan everything ahead
+  agile : scrum and kanban ; always iterating
+
+  scrum : 2 week sprints, plan for a short period
+  initial planning (tuesday)
+  daily standup
+  end of sprint : retrospective (what went well, what did not go well)
+
+  user story : guide to what you will deliver, don't build things that are not useful to the user
+    be totally focused on what the user wants
+
+  

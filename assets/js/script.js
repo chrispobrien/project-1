@@ -25,7 +25,8 @@ booksEl.addEventListener('click', function(event) {
 });
 
 // On click of Search button, load form values to localSourceData
-searchButtonEl.addEventListener('click', function() {
+searchButtonEl.addEventListener('click', function(event) {
+  event.preventDefault();
   localSourceData.date = moment(dateEl.value).format('YYYY-MM-DD');
   localSourceData.selected = listEl.value;
   getBooks();
@@ -51,16 +52,17 @@ var populateList = function() {
 var populateBooks = function() {
   booksEl.innerHTML = '';
   let titleDiv = document.createElement("div");
-  titleDiv.setAttribute("class","small-12 cell");
+  titleDiv.setAttribute("class","block");
   let name = document.createElement("h3");
   name.textContent = localSourceData.lists[localSourceData.selected].display_name;
+  name.setAttribute("class","text-xl block");
   titleDiv.appendChild(name);
   booksEl.appendChild(titleDiv);
   let bookList = document.createElement("div");
-  bookList.setAttribute("class","small-3 medium-3 large-3 cell")
+  bookList.setAttribute("class","flex-auto")
   for (let i=0;i<localSourceData.bookResults.books.length;i++) {
     let newBook = document.createElement("div");
-    newBook.setAttribute("class","small-6 medium-4 large-3 cell book");
+    newBook.setAttribute("class","book");
     newBook.setAttribute("data-isbn13",localSourceData.bookResults.books[i].primary_isbn13);
     let bookTitle = document.createElement("h5");
     bookTitle.textContent = localSourceData.bookResults.books[i].title;
