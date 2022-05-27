@@ -7,6 +7,10 @@ h1 {
     font-weight:800;
 }
 
+.books {
+    grid-auto-rows: minmax(300,auto);
+}
+
 .book {
     background-color: orange;
     border: 2px darkgoldenrod solid;

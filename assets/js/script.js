@@ -52,17 +52,17 @@ var populateList = function() {
 var populateBooks = function() {
   booksEl.innerHTML = '';
   let titleDiv = document.createElement("div");
-  titleDiv.setAttribute("class","block");
+  titleDiv.setAttribute("class","col-span-4");
   let name = document.createElement("h3");
   name.textContent = localSourceData.lists[localSourceData.selected].display_name;
   name.setAttribute("class","text-xl block");
   titleDiv.appendChild(name);
   booksEl.appendChild(titleDiv);
-  let bookList = document.createElement("div");
-  bookList.setAttribute("class","flex-auto")
+  //let bookList = document.createElement("div");
+  //bookList.setAttribute("class","flex-auto")
   for (let i=0;i<localSourceData.bookResults.books.length;i++) {
     let newBook = document.createElement("div");
-    newBook.setAttribute("class","book");
+    newBook.setAttribute("class","w-48 block book");
     newBook.setAttribute("data-isbn13",localSourceData.bookResults.books[i].primary_isbn13);
     let bookTitle = document.createElement("h5");
     bookTitle.textContent = localSourceData.bookResults.books[i].title;
@@ -70,8 +70,7 @@ var populateBooks = function() {
     let newRef = document.createElement("img");
     newRef.setAttribute("src",localSourceData.bookResults.books[i].book_image);
     newRef.setAttribute("alt",localSourceData.bookResults.books[i].title + " book cover");
-    newRef.setAttribute("width","174");
-    newRef.setAttribute("height","268");
+    newRef.setAttribute("class","w-48 aspect-auto");
     newBook.appendChild(bookTitle);
     newBook.appendChild(newRef);
     booksEl.appendChild(newBook);
