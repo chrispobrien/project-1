@@ -17,7 +17,7 @@
 
     <div class="flex flex-col">
         <div class="basis-full head">
-            <h1 class="text-2xl font-black">New York Times Bestseller Lists</h1>
+            <h1 class="text-2xl ml-2 font-black">New York Times Bestseller Lists</h1>
         </div>
     </div>
 
@@ -31,16 +31,24 @@
             </div>
             <div class="mb-6 p-2">
                 <label for="listEl"
-                    class="block ml-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bestseller List:</label>
+                    class="block ml-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bestseller
+                    List:</label>
                 <select id="listEl"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></select>
             </div>
-            <button type="submit" id="searchButton"
-                class="m-2 float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            <div class="mb-6 ml-4 p-2">
+                <button type="submit" id="searchButton"
+                    class="m-2 float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            </div>
         </form>
-        <div id="books" class="grid grid-flow-row-dense lg:col-span-5 md:col-span-3 sm:col-span-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 h-48 books">
+        <!-- <div id="books" class="grid lg:col-span-5 md:col-span-3 sm:col-span-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 h-48 books"> -->
+        <div class="grid lg:col-span-5 md:col-span-3 sm:col-span-1">
+            <span id="title" class="ml-4 text-xl">test</span>
+            <div id="books" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 h-48">
+
+            </div>
         </div>
-        </div>
+    </div>
 
 
 

@@ -53,16 +53,16 @@ var populateBooks = function() {
   booksEl.innerHTML = '';
   let titleDiv = document.createElement("div");
   titleDiv.setAttribute("class","col-span-4");
-  let name = document.createElement("h3");
+  let name = document.querySelector("#title");
   name.textContent = localSourceData.lists[localSourceData.selected].display_name;
-  name.setAttribute("class","text-xl block");
-  titleDiv.appendChild(name);
-  booksEl.appendChild(titleDiv);
+  //name.setAttribute("class","text-xl");
+  //titleDiv.appendChild(name);
+  //booksEl.appendChild(titleDiv);
   //let bookList = document.createElement("div");
   //bookList.setAttribute("class","flex-auto")
   for (let i=0;i<localSourceData.bookResults.books.length;i++) {
     let newBook = document.createElement("div");
-    newBook.setAttribute("class","w-48 block book");
+    newBook.setAttribute("class","book");
     newBook.setAttribute("data-isbn13",localSourceData.bookResults.books[i].primary_isbn13);
     let bookTitle = document.createElement("h5");
     bookTitle.textContent = localSourceData.bookResults.books[i].title;
@@ -70,9 +70,13 @@ var populateBooks = function() {
     let newRef = document.createElement("img");
     newRef.setAttribute("src",localSourceData.bookResults.books[i].book_image);
     newRef.setAttribute("alt",localSourceData.bookResults.books[i].title + " book cover");
-    newRef.setAttribute("class","w-48 aspect-auto");
+    newRef.setAttribute("class","w-full");
     newBook.appendChild(bookTitle);
     newBook.appendChild(newRef);
+    let bookAuthor = document.createElement("p");
+    bookAuthor.textContent = localSourceData.bookResults.books[i].author;
+    bookAuthor.setAttribute("class","text-sm");
+    newBook.appendChild(bookAuthor);
     booksEl.appendChild(newBook);
   };
   //booksEl.appendChild(bookList);
