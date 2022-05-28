@@ -17,7 +17,6 @@ var localSourceData = {
 // On click of books area, check if it is a book and refer to book page
 booksEl.addEventListener('click', function(event) {
   let bookEl = event.target.closest('.book');
-  console.log(bookEl);
   if (bookEl) {
     let Url = './book.html?isbn13=' + bookEl.getAttribute('data-isbn13');
     window.location.href = Url;
@@ -50,16 +49,16 @@ var populateList = function() {
 
 // Load books to the main window
 var populateBooks = function() {
+  // Clear books section
   booksEl.innerHTML = '';
+
+  // Title of list
   let titleDiv = document.createElement("div");
   titleDiv.setAttribute("class","col-span-4");
   let name = document.querySelector("#title");
   name.textContent = localSourceData.lists[localSourceData.selected].display_name;
-  //name.setAttribute("class","text-xl");
-  //titleDiv.appendChild(name);
-  //booksEl.appendChild(titleDiv);
-  //let bookList = document.createElement("div");
-  //bookList.setAttribute("class","flex-auto")
+
+  // Each book in the list
   for (let i=0;i<localSourceData.bookResults.books.length;i++) {
     let newBook = document.createElement("div");
     newBook.setAttribute("class","book bg-slate-100 dark:bg-slate-600 p-1 m-2 rounded cursor-pointer");
@@ -91,7 +90,6 @@ var getBooks = function() {
 
   fetch(Url)
     .then(function(response) {
-      console.log(response);
       if (response.ok){
         response.json().then(function(data) {
           localSourceData.bookResults = data.results;
@@ -105,7 +103,7 @@ var getBooks = function() {
     .catch(function(error) {
       console.log(error);
     });
-
+    dateEl.value = localSourceData.date;
 }
 
 // First API, loads all the bestseller lists
@@ -115,10 +113,10 @@ var getList = function() {
 
   fetch(Url)
     .then(function(response) {
-      console.log(response);
       if (response.ok){
         response.json().then(function(data) {
           localSourceData.lists = data.results;
+          populateList();
           // Call API to load books for the first list, now that we know what it is
           getBooks();
         })
@@ -134,8 +132,11 @@ var getList = function() {
 
 }
 
+// Loads object with local data OR loads object through API calls
 var loadLocalSourceData = function() {
   let lsd = localStorage.getItem("nyt");
+
+  // If localStorage item exists, parse it and assign it
   if (lsd) {
     localSourceData = JSON.parse(lsd);
   } else {
@@ -143,15 +144,22 @@ var loadLocalSourceData = function() {
     getList();
     localSourceData.date = moment().format('YYYY-MM-DD');
   };
-  if (localSourceData.lists) {
+
+  // If we have the bestseller lists at this point, fill the drop-down list
+  if (localSourceData.lists.length>0) {
     populateList();
   };
-  if (localSourceData.bookResults) {
+
+  // If we have the bestseller list selected and books for it, show them
+  if (localSourceData.bookResults.books) {
     populateBooks();
   };
+
+  // If there is no date yet, assign today's date
   if (!localSourceData.date || localSourceData.date === "") {
     localSourceData.date = moment().format("YYYY-MM-DD");
   };
+
   dateEl.value = localSourceData.date;
 }
 
