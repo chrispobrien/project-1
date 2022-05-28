@@ -11,7 +11,9 @@ var localSourceData = {
     // Results object, includes .books array of books on the list
     bookResults: {},
     selected: 0,
-    date: ''
+    date: '',
+    // Book data
+    book: {}
   };
 
 var showBook = function() {
@@ -22,7 +24,8 @@ var showBook = function() {
     author.textContent = 'Author: '+localSourceData.bookResults.books[book].author;
     mainEl.appendChild(author);
     let description = document.createElement("p");
-    description.textContent = localSourceData.bookResults.books[book].description;
+    //description.textContent = localSourceData.bookResults.books[book].description;
+    description.textContent = localSourceData.book.items[0].volumeInfo.description;
     description.setAttribute("class","mb-5");
     mainEl.appendChild(description);
     let buyLink = document.createElement("a");
@@ -63,6 +66,30 @@ var handleGBResponse = function(data) {
     console.log(data);
 }
 
+// Google Books API, gathers more info on this book
+var getBook = function() {
+    let Url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:'
+    + isbn13;
+  
+    fetch(Url)
+      .then(function(response) {
+        console.log(response);
+        if (response.ok){
+          response.json().then(function(data) {
+            localSourceData.book = data;
+            saveLocalSourceData();
+            // Now that we have a list of books, show them
+            //populateBooks();
+          })
+        }
+      })
+      //.then(data)
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  }
+
 // So this localStorage should be filled whenever user browses to book page
 var loadLocalSourceData = function() {
     google.books.load();
@@ -71,9 +98,16 @@ var loadLocalSourceData = function() {
     if (lsd) {
       localSourceData = JSON.parse(lsd);
     };
+    if (!lsd.book || lsd.book.items[0].volumeInfo.industryIdentifiers[0].identifier != isbn13) {
+        getBook();
+    }
     book = localSourceData.bookResults.books.findIndex(books => books.primary_isbn13 === isbn13);
     showBook();
     addGoogleBooks();
+};
+
+var saveLocalSourceData = function() {
+    localStorage.setItem("nyt",JSON.stringify(localSourceData));
 };
 
 loadLocalSourceData();

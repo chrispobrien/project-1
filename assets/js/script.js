@@ -62,7 +62,7 @@ var populateBooks = function() {
   //bookList.setAttribute("class","flex-auto")
   for (let i=0;i<localSourceData.bookResults.books.length;i++) {
     let newBook = document.createElement("div");
-    newBook.setAttribute("class","book");
+    newBook.setAttribute("class","book bg-slate-100 dark:bg-slate-600 p-1 m-2 rounded cursor-pointer");
     newBook.setAttribute("data-isbn13",localSourceData.bookResults.books[i].primary_isbn13);
     let bookTitle = document.createElement("h5");
     bookTitle.textContent = localSourceData.bookResults.books[i].title;
