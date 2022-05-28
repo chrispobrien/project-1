@@ -60,6 +60,40 @@ var showBook = function() {
     textDiv.textContent = insertLineBreaks(localSourceData.book.items[0].volumeInfo.description);
     description.appendChild(textDiv);
 
+    let buyLinksEl = document.querySelector("#buyLinks");
+    buyLinksEl.innerHTML = "";
+    let buyTitle = document.createElement("div");
+    buyTitle.setAttribute("class","mb-5");
+    buyTitle.textContent="Buy";
+    buyLinksEl.appendChild(buyTitle);
+    for (let i=0;i<localSourceData.bookResults.books[book].buy_links.length;i++) {
+        let buyLinkDiv = document.createElement("div");
+        buyLinkDiv.setAttribute("class","mb-5");
+        let buyLink = document.createElement("a");
+        buyLink.setAttribute("href",localSourceData.bookResults.books[book].buy_links[i].url);
+        buyLink.setAttribute("class","bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4");
+        buyLink.textContent = localSourceData.bookResults.books[book].buy_links[i].name;
+        buyLinkDiv.appendChild(buyLink)
+        buyLinksEl.appendChild(buyLinkDiv);
+    }
+
+    let borrowLinksEl = document.querySelector("#borrowLinks");
+    borrowLinksEl.innerHTML = "";
+    let borrowTitle = document.createElement("div");
+    borrowTitle.setAttribute("class","mb-5");
+    borrowTitle.textContent="Borrow";
+    borrowLinksEl.appendChild(borrowTitle);
+
+    let borrowLinkDiv = document.createElement("div");
+    borrowLinkDiv.setAttribute("class","mb-5");
+    let borrowLink = document.createElement("a");
+    borrowLink.setAttribute("href","https://browse.nypl.org/iii/encore/search/C__S"
+         + isbn13 + "__Orightresult__U?lang=eng&suite=def");
+    borrowLink.setAttribute("class","bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4");
+    borrowLink.textContent = "NY Public Library";
+    borrowLinkDiv.appendChild(borrowLink)
+    borrowLinksEl.appendChild(borrowLinkDiv);
+
     // let buyLink = document.createElement("a");
     // buyLink.setAttribute("href",localSourceData.bookResults.books[book].amazon_product_url);
     // buyLink.setAttribute("class","m-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800");
