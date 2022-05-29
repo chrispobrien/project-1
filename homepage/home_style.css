@@ -99,7 +99,7 @@ p{
 
 
 /* CSS */
-.button-73 {
+.button {
   appearance: none;
   background-color: #ffffff25;
   border-radius: 40em;
@@ -125,18 +125,18 @@ p{
   touch-action: manipulation;
 }
 
-.button-73:hover {
+.button:hover {
   background-color: #dfd6bb24;
   box-shadow: #807d7bd3 0 -6px 8px inset;
   transform: scale(1.125);
 }
 
-.button-73:active {
+.button:active {
   transform: scale(1.025);
 }
 
 @media (min-width: 768px) {
-  .button-73 {
+  .button {
     /* font-size: 1.5rem; */
     padding: .75rem 2rem;
   }
@@ -145,7 +145,7 @@ p{
 
 
 /* Button */
-/* .button-86 {
+/* .button {
   all: unset;
   width: 100px;
   height: 30px;
@@ -166,8 +166,8 @@ p{
   touch-action: manipulation;
 }
 
-.button-86::after,
-.button-86::before {
+.button::after,
+.button::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -176,7 +176,7 @@ p{
   transition: all .4s;
 }
 
-.button-86::before {
+.button::before {
   transform: translate(0%, 0%);
   width: 100%;
   height: 100%;
@@ -184,7 +184,7 @@ p{
   border-radius: 10px;
 }
 
-.button-86::after {
+.button::after {
   transform: translate(10px, 10px);
   width: 35px;
   height: 35px;
@@ -194,20 +194,20 @@ p{
   border-radius: 50px;
 }
 
-.button-86:hover::before {
+.button:hover::before {
   transform: translate(5%, 20%);
   width: 110%;
   height: 110%;
 }
 
-.button-86:hover::after {
+.button:hover::after {
   border-radius: 10px;
   transform: translate(0, 0);
   width: 100%;
   height: 100%;
 }
 
-.button-86:active::after {
+.button:active::after {
   transition: 0s;
   transform: translate(0, 5%);
 } */
