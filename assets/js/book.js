@@ -38,15 +38,28 @@ var showBook = function() {
     // There can be more than one author
     // TODO: Style multiple authors, <br /> ?
     let author = document.querySelector("#author");
+    author.innerHTML = "";
+    let label = document.createElement("div");
+    label.setAttribute("class","float-left mx-auto");
     if (localSourceData.book.items[0].volumeInfo.authors.length>1) {
-        author.textContent = 'Authors: ';
-        for (let i=0;i<localSourceData.book.items[0].volumeInfo.authors.length;i++)
-            author.textContent += localSourceData.book.items[0].volumeInfo.authors[i] + ", ";
-        author.textContent = author.textContent.substring(0,author.textContent.length-2);
+        label.textContent = "Authors:";
     } else {
-        author.textContent = 'Author: ' + localSourceData.book.items[0].volumeInfo.authors[0]
-    }
+        label.textContent = "Author:";
+    };
 
+    let authors = document.createElement("div");
+    for (let i=0;i<localSourceData.book.items[0].volumeInfo.authors.length;i++) {
+        let newAuthor = document.createElement("div");
+        newAuthor.setAttribute("class","");
+        newAuthor.textContent = localSourceData.book.items[0].volumeInfo.authors[i];
+        authors.appendChild(newAuthor);
+    }
+        
+    
+    authors.setAttribute("class","grid grid-cols-1 float-right mx-auto");
+
+    author.appendChild(label);
+    author.appendChild(authors);
     let description = document.querySelector("#description");
     description.innerHTML = "";
     let coverDiv = document.createElement("div");
@@ -122,7 +135,6 @@ var getBook = function() {
   
     fetch(Url)
       .then(function(response) {
-        console.log(response);
         if (response.ok){
           response.json().then(function(data) {
             localSourceData.book = data;
