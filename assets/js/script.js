@@ -118,7 +118,7 @@ var getList = function() {
           localSourceData.lists = data.results;
           populateList();
           // Call API to load books for the first list, now that we know what it is
-          getBooks();
+          //getBooks();
         })
       }
     })
@@ -152,7 +152,7 @@ var loadLocalSourceData = function() {
 
   // If we have the bestseller list selected and books for it, show them
   if (localSourceData.bookResults.books) {
-    populateBooks();
+    //populateBooks();
   };
 
   // If there is no date yet, assign today's date

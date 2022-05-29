@@ -2,56 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href=".assets/css/home_style.css">
     <meta name="description" content="Book Review: Week 6 Coding Challenge, Columbia Engineering Coding Bootcamp">
-    <title>Book Reviews</title>
+    <title>Team Five Homepage</title>
 </head>
 
-<body class="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+<!-- Entire Webpage Content -->
 
-    <div class="flex flex-col">
-        <div class="basis-full head">
-            <h1 class="text-2xl ml-2 font-black">Book Explorer</h1>
-        </div>
+<body>
+    <!-- Top Navigation Banner Block Content -->
+
+    <header>
+        <!-- Top Nav. Ban. Hyperlinks -->
+
+
+            <nav>
+                <ul>
+
+                 <div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap; padding-top: 30px;">
+
+                    <li>
+                        <button class="button" role="button"><input type=button onClick="parent.open('')"value='HOME'></input></button>
+                    </li>
+
+
+                    <li>
+                        <button class="button" role="button"><input type=button onClick="parent.open('')"value='BOOKS'></input></button>
+                    </li>
+
+
+                    <li>
+                        <button class="button" role="button"><input type=button onClick="parent.open('')"value='TEAM'></input></button>
+                    </li>
+
+               </div>
+                </ul>
+    
+            </nav>
+
+    </header>
+
+
+    <!-- Jumbotron Markup -->
+    <section class="hero">
+
+        <h1>Team Five's Book Explorer</h1>
+
+        <div class="flex justify-center" ></div>
+       
+    </section>
+
+    <section class="imgBox">
+    <div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap;">
+
+        <img
+        id="bookPic" src="./assets/images/imgbin_book-stock-photography-png.png"
+            alt="an open vinatge book diplayed with pages fanned out"> 
+        </img>
+
     </div>
+    </section>
 
-    <div class="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-1 ml-2">
-        <form class="bg-gray-600 rounded-lg">
-            <div class="mb-6 p-2">
-                <label for="date"
-                    class="block ml-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Date:</label>
-                <input type="date" id="date"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </div>
-            <div class="mb-6 p-2">
-                <label for="listEl"
-                    class="block ml-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New York Times Bestseller
-                    List:</label>
-                <select id="listEl"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></select>
-            </div>
-            <div class="mb-6 ml-4 p-2">
-                <button type="submit" id="searchButton"
-                    class="m-2 float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-            </div>
-        </form>
-        <!-- <div id="books" class="grid lg:col-span-5 md:col-span-3 sm:col-span-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 h-48 books"> -->
-        <div class="grid lg:col-span-5 md:col-span-3 sm:col-span-1">
-            <span id="title" class="ml-4 text-xl">test</span>
-            <div id="books" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 h-48">
-
-            </div>
-        </div>
+    <section class="">
+    <div class="flex justify-evenly" 
+    style="flex-direction: row; flex-wrap: wrap; align-items: flex-start;"
+    >
+        <p>
+            <br>This site is a one-stop ecommerce search engine that searches over 150 million books for sale. Books that are new, used, and possible to borrow from a library near you.</br>
+            <br>We save you time and money by searching New York Times Bestsellers Lists and letting you know which booksellers are offering the best prices and selection.</br>
+            <br>We are heavy readers, and buy several dozen books every year using our own search engine. We take pleasure in advocating for a strong, diverse, bookselling industry.</br>
+            <br>Dive-in and enjoy!</br>
+    </p>
     </div>
+</section>
 
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
 </body>
+
 
 </html>
