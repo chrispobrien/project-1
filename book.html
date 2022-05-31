@@ -31,6 +31,16 @@
         </div>
     </div>
 
+    <div id="modal" class="fixed hidden inset-0 bg-slate-300 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-40 mx-auto my-auto border w-96 bg-white">
+            <div id="modal-title" class="bg-red-400 px-2 text-white">Error</div>
+            <div id="modal-message" class="px-2"></div>
+            <div class="items-center px-4 py-4">
+                <button id="modal-dismiss"
+                    class="m-2 float-right text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">OK</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/book.js"></script>

@@ -6,6 +6,10 @@ const urlParams = new URLSearchParams(queryString);
 const isbn13 = urlParams.get('isbn13');
 // Book index within bestseller list
 var book = 0;
+// Modal references
+var modalEl = document.querySelector("#modal");
+var modalMessageEl = document.querySelector("#modal-message");
+var modalDismissEl = document.querySelector("#modal-dismiss");
 
 // Template of local object to store info
 var localSourceData = {
@@ -20,6 +24,10 @@ var localSourceData = {
     // NY Times reviews, if any
     reviews: []
   };
+
+modalDismissEl.addEventListener('click',function(event) {
+  modalEl.style.display = 'none';
+});
 
 // Once book is loaded, show details  
 var showBook = function() {
@@ -112,7 +120,7 @@ var initViewer = function() {
 
 // Inserts a script function to call Google Books API - callback function handleGBResponse
 var addGoogleBooks = function() {
-    let gbUrl = `https://books.google.com/books?jscmd=viewapi&bibkeys=ISBN:${isb13}&callback=handleGBResponse`
+    let gbUrl = `https://books.google.com/books?jscmd=viewapi&bibkeys=ISBN:${isbn13}&callback=handleGBResponse`
     let gbEl = document.createElement("script");
     gbEl.setAttribute("src",gbUrl);
     gbEl.setAttribute("type","text/javascript");
@@ -164,10 +172,12 @@ var getReviews = function() {
                     showReviews();
                 })
             } else {
+                // Fail silently
                 localSourceData.reviews = {};
             }
         })
         .catch(function(error) {
+            // Fail silently
             localSourceData.reviews = {};
         })
 }
@@ -185,12 +195,16 @@ var getBook = function() {
             book = localSourceData.bookResults.books.findIndex(books => books.primary_isbn13 === isbn13);
             showBook();
           })
+        } else {
+            modalMessageEl.textContent = response.statusText;
+            modalEl.style.display='block';
         }
       })
       //.then(data)
       .catch(function(error) {
-        console.log(error);
-      });
+        modalMessageEl.textContent = error;
+        modalEl.style.display='block';
+  });
 }
 
 // So this localStorage should be filled whenever user browses to book page
