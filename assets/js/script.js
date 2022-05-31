@@ -107,21 +107,24 @@ var populateBooks = function() {
 
 // Second API, loads all the books in the selected bestseller list
 var getBooks = function() {
-  let Url = 'https://api.nytimes.com/svc/books/v3/lists/'
-  + localSourceData.date + '/'
-  + localSourceData.lists[localSourceData.selected].list_name_encoded +'.json?'
-  +'api-key=' +nytAPIKey;
+  let Url = `https://api.nytimes.com/svc/books/v3/lists/${localSourceData.date}/`
+  + `${localSourceData.lists[localSourceData.selected].list_name_encoded}.json?`
+  + `api-key=${nytAPIKey}`;
 
   fetch(Url)
     .then(function(response) {
-      if (response.ok){
+      if (response.ok) {
         response.json().then(function(data) {
           localSourceData.bookResults = data.results;
           saveLocalSourceData();
           // Now that we have a list of books, show them
           populateBooks();
         })
+      } else {
+        modalMessageEl.textContent = response.statusText;
+        modalEl.style.display='block';
       }
+
     })
     //.then(data)
     .catch(function(error) {
@@ -133,28 +136,27 @@ var getBooks = function() {
 
 // First API, loads all the bestseller lists
 var getList = function() {
-  let Url = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key='
-    +nytAPIKey;
+  let Url = `https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${nytAPIKey}`;
 
   fetch(Url)
     .then(function(response) {
-      if (response.ok){
+      if (response.ok) {
         response.json().then(function(data) {
           localSourceData.lists = data.results;
           populateList();
           // Call API to load books for the first list, now that we know what it is
           //getBooks();
         })
+      } else {
+        modalMessageEl.textContent = response.statusText;
+        modalEl.style.display='block';
       }
     })
     //.then(data)
     .catch(function(error) {
-      console.log(error);
-    });
-
-    // This part should really fire on selection of a category
-
-
+      modalMessageEl.textContent = error;
+      modalEl.style.display='block';
+  });
 }
 
 // Loads object with local data OR loads object through API calls
