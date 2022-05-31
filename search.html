@@ -22,14 +22,12 @@
     <div class="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-1 ml-2">
         <form class="bg-gray-400 rounded-lg">
             <div class="mb-6 p-2">
-                <label for="date"
-                    class="block ml-2 mb-2 text-sm font-medium text-gray-900">Date:</label>
+                <label for="date" class="block ml-2 mb-2 text-sm font-medium text-gray-900">Date:</label>
                 <input type="date" id="date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
             </div>
             <div class="mb-6 p-2">
-                <label for="listEl"
-                    class="block ml-2 mb-2 text-sm font-medium text-gray-900">New York Times Bestseller
+                <label for="listEl" class="block ml-2 mb-2 text-sm font-medium text-gray-900">New York Times Bestseller
                     List:</label>
                 <select id="listEl"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></select>
@@ -48,7 +46,16 @@
         </div>
     </div>
 
-
+    <div id="modal" class="fixed hidden inset-0 bg-slate-300 bg-opacity=50 overflow-y-auto h-full w-full">
+        <div class="relative top-40 mx-auto my-auto border w-96 bg-white">
+            <div id="modal-title">Error</div>
+            <div id="modal-message"></div>
+            <div class="items-center px-4 py-4">
+                <button id="modal-dismiss"
+                    class="m-2 float-right text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">OK</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>

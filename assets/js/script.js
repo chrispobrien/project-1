@@ -3,6 +3,9 @@ var dateEl = document.querySelector('#date');
 var listEl = document.querySelector('#listEl');
 var searchButtonEl = document.querySelector('#searchButton');
 var booksEl = document.querySelector('#books');
+var modalEl = document.querySelector("#modal");
+var modalMessageEl = document.querySelector("#modal-message");
+var modalDismissEl = document.querySelector("#modal-dismiss");
 
 // Template of local object to store info
 var localSourceData = {
@@ -10,9 +13,16 @@ var localSourceData = {
   lists:[],
   // Results object, includes .books array of books on the list
   bookResults: {},
-  selected: 0,
-  date: ''
+  selected: -1,
+  date: '',
+  // Not populated on this page - on book.html
+  book: {},
+  reviews: []
 };
+
+modalDismissEl.addEventListener('click',function(event) {
+  modalEl.style.display = 'none';
+});
 
 // On click of books area, check if it is a book and refer to book page
 booksEl.addEventListener('click', function(event) {
@@ -27,17 +37,31 @@ booksEl.addEventListener('click', function(event) {
 searchButtonEl.addEventListener('click', function(event) {
   event.preventDefault();
   localSourceData.date = moment(dateEl.value).format('YYYY-MM-DD');
-  localSourceData.selected = listEl.value;
-  getBooks();
+  if (listEl.value>-1) {
+    localSourceData.selected = listEl.value;
+    getBooks();
+  } else {
+    modalMessageEl.textContent = 'Please select a bestseller list!';
+    modalEl.style.display='block';
+  };
 });
 
 // Load drop-down selection box with options
 var populateList = function() {
   listEl.innerHTML = '';
+
+  // Starter option
+  let startOptionEl = document.createElement("option");
+  startOptionEl.setAttribute('value',-1);
+  startOptionEl.textContent='Select a list...';
+  listEl.appendChild(startOptionEl);
+
+  // Lists with activity in the last year
   for (i=0;i<localSourceData.lists.length;i++) {
     // Some lists are very old, show only lists updated in the past year
     let newestPublishedDate = moment(localSourceData.lists[i].newest_published_date);
     if (newestPublishedDate > (moment().subtract(1,'years'))) {
+      // Add this list as an option
       let optionEl = document.createElement("option");
       optionEl.setAttribute('value',i);
       optionEl.textContent = localSourceData.lists[i].display_name;
@@ -101,7 +125,8 @@ var getBooks = function() {
     })
     //.then(data)
     .catch(function(error) {
-      console.log(error);
+      modalMessageEl.textContent = error;
+      modalEl.style.display='block';
     });
     dateEl.value = localSourceData.date;
 }

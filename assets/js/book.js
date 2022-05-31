@@ -191,8 +191,7 @@ var getBook = function() {
       .catch(function(error) {
         console.log(error);
       });
-  
-  }
+}
 
 // So this localStorage should be filled whenever user browses to book page
 var loadLocalSourceData = function() {
