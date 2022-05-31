@@ -9,7 +9,7 @@
 
 
 body {
-    background-image: url(../images/04C40A01-18E7-4451-A921-D95684B61720_1_201_a.jpeg);
+    background-image: url(../homepage/images/B38D9581-D993-4EC1-A6E1-195FD6294B7D.jpeg);
     background-repeat: none;
     background-size: cover;
     background-position: center;
@@ -19,12 +19,12 @@ body {
 
 /* Header Content */ 
 
-/* header nav {
-    border: 4px solid rgb(255, 0, 234);
+header nav {
+    /* border: 4px solid rgb(255, 0, 234);
     width: 100%;
-    height: 95px;
+    height: 95px; */
     justify-content: center;
-} */
+}
 
 header nav ul li{
 
@@ -78,6 +78,8 @@ p{
   height: 80; 
   width: 100%;
 } */
+
+
 
 #bookPic {
     width: 350px;
