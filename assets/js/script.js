@@ -15,7 +15,7 @@ var localSourceData = {
   bookResults: {},
   selected: -1,
   date: '',
-  // Not populated on this page - on book.html
+  // Not populated on this page - on book.html - if user chooses a book
   book: {},
   reviews: []
 };
