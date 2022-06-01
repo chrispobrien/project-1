@@ -7,11 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/contacts.css" />
     <meta name="description" content="Book Explorer: Week 7-8 Coding Challenge, Columbia Engineering Coding Bootcamp">
     <title>Book Explorer: Details</title>
 </head>
 
 <body class="bg-white text-slate-800">
+<header>
+    <nav>
+        <ul>
+            <div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap; padding-top: 30px;">
+                <!--create onclick with JS if you want @Muhammad-->
+                <button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'index.html'" value='HOME'></input></button>
+                <button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'search.html'" value='BOOKS'></input></button>
+                <button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'contacts.html'" value='TEAM'></input></button>
+            </div>
+        </ul>
+    </nav>
+</header>
+
 <div id="mainWrapper" class="grid lg:grid-cols-2 sm:grid-cols-1">
     <div id="main" class="container mx-auto w-96">
         <h1 id="title" class="text-center text-2xl">Loading...</h1>
