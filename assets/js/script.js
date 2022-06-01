@@ -145,7 +145,8 @@ var getList = function() {
           localSourceData.lists = data.results;
           populateList();
           // Call API to load books for the first list, now that we know what it is
-          getBooks();
+          if (localSourceData.selected>-1)
+            getBooks();
         })
       } else {
         modalMessageEl.textContent = response.statusText;
