@@ -89,7 +89,7 @@ var populateBooks = function() {
     newBook.setAttribute("data-isbn13",localSourceData.bookResults.books[i].primary_isbn13);
     let bookTitle = document.createElement("h5");
     bookTitle.textContent = localSourceData.bookResults.books[i].title;
-    bookTitle.setAttribute("class","book-title")
+    bookTitle.setAttribute("class","text-center h-16 font-semibold")
     let newRef = document.createElement("img");
     newRef.setAttribute("src",localSourceData.bookResults.books[i].book_image);
     newRef.setAttribute("alt",localSourceData.bookResults.books[i].title + " book cover");
@@ -145,7 +145,7 @@ var getList = function() {
           localSourceData.lists = data.results;
           populateList();
           // Call API to load books for the first list, now that we know what it is
-          //getBooks();
+          getBooks();
         })
       } else {
         modalMessageEl.textContent = response.statusText;
@@ -167,7 +167,7 @@ var loadLocalSourceData = function() {
   if (lsd) {
     localSourceData = JSON.parse(lsd);
   } else {
-    // No localStorage, get data for it from API calls
+    // No localStorage, get data for the list of bestsellers from API calls
     getList();
     localSourceData.date = moment().format('YYYY-MM-DD');
   };
@@ -179,7 +179,7 @@ var loadLocalSourceData = function() {
 
   // If we have the bestseller list selected and books for it, show them
   if (localSourceData.bookResults.books) {
-    //populateBooks();
+    populateBooks();
   };
 
   // If there is no date yet, assign today's date

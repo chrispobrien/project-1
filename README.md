@@ -40,7 +40,7 @@ THEN I am referred to the New York Public Library
     * index.html is a landing page introducing the site with a nav bar
     * contacts.html is an "about us" page listing team members
     * search.html is the main search engine, it includes a form soliciting date and bestseller list, and shows books on that list for that date
-    * book.html takes as a parameter the isbn13 number of a book, and displays more detailed information, as well as reviews, if any, and buy links and one borrow link for the New York Public Library
+    * book.html takes as a parameter the isbn13 number of a book, and displays more detailed information, as well as reviews, if any, and buy links from the New York Times, and one borrow link for the New York Public Library
 
 ## Installation
 
@@ -61,8 +61,11 @@ Since this is a classroom exercise you may simply open the index.html file in a 
 Project 1 Group 5 Team Members
 
 Muhammad Azam
+
 Damaris Canales
-Andrew P. Lee 
+
+Andrew P. Lee
+
 Chris O'Brien
 
 ## Notes
