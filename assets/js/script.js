@@ -26,9 +26,10 @@ modalDismissEl.addEventListener('click',function(event) {
   modalEl.style.display = 'none';
 });
 
-modalEl1.addEventListener('click', function(user) {
-  modelEl1.style.display = 'none';
-})
+// This doesn't work - there is no object ModalEl1
+// modalEl1.addEventListener('click', function(user) {
+//   modelEl1.style.display = 'none';
+// })
 
 
 // On click of books area, check if it is a book and refer to book page
