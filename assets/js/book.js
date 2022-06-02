@@ -222,8 +222,11 @@ var loadLocalSourceData = function() {
     let lsd = localStorage.getItem("nyt");
     if (lsd) {
       localSourceData = JSON.parse(lsd);
+    } else {
+        // If no localStorage, refer visitor back to search page
+        window.location ="search.html";
     };
-    if (!lsd.book || lsd.book.items[0].volumeInfo.industryIdentifiers[0].identifier != isbn13) {
+    if (!lsd || !lsd.book || lsd.book.items[0].volumeInfo.industryIdentifiers[0].identifier != isbn13) {
         getBook();
         getReviews();
     } else {
