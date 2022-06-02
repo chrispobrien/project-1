@@ -7,6 +7,6 @@ modalEl1.addEventListener('click', function() {
   })
 
 modelprofile.addEventListener('click', function() {
-    modalprofile.style.displau = 'none';
+    modalprofile.style.displau = 'block;'
 })
 
