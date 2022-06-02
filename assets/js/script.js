@@ -20,6 +20,7 @@ var localSourceData = {
 	reviews: [],
 };
 
+// This modal displays an error
 modalDismissEl.addEventListener("click", function (event) {
 	modalEl.style.display = "none";
 });

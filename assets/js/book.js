@@ -27,12 +27,20 @@ var localSourceData = {
     reviews: []
   };
 
+// This modal displays an error, if error, send the visitor back to the search page
 modalDismissEl.addEventListener('click',function(event) {
   modalEl.style.display = 'none';
+  window.location = "search.html";
 });
 
 // Once book is loaded, show details  
 var showBook = function() {
+    if (localSourceData.book.totalItems === 0) {
+        // No return value from Google Books
+        modalMessageEl.textContent = 'Sorry! No Google Books results returned.';
+        modalEl.style.display='block';
+        return;
+    };
     let title = document.querySelector("#title");
     title.textContent = localSourceData.book.items[0].volumeInfo.title;
     let subtitle = document.querySelector("#subtitle");
