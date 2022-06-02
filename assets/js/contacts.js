@@ -6,5 +6,5 @@ modalEl1.addEventListener('click', function() {
     modalEl1.style.display = 'none';
   })
 
-  
+
 
