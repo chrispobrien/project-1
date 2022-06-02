@@ -6,5 +6,7 @@ modalEl1.addEventListener('click', function() {
     modalEl1.style.display = 'none';
   })
 
-
+modelprofile.addEventListener('click', function() {
+    modalprofile.style.displau = 'none';
+})
 
