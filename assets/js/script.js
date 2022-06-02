@@ -6,9 +6,7 @@ var booksEl = document.querySelector('#books');
 var modalEl = document.querySelector("#modal");
 var modalMessageEl = document.querySelector("#modal-message");
 var modalDismissEl = document.querySelector("#modal-dismiss");
-var modalEl1 = document.querySelector("#container")
-var modalprofile = document.querySelector("#portfolio")
-var modalcontacts = document.querySelector("#contacts-info")
+
 // Template of local object to store info
 var localSourceData = {
   // Array of bestseller lists available from NYT
@@ -26,9 +24,7 @@ modalDismissEl.addEventListener('click',function(event) {
   modalEl.style.display = 'none';
 });
 
-modalEl1.addEventListener('click', function(user) {
-  modelEl1.style.display = 'none';
-})
+
 
 
 // On click of books area, check if it is a book and refer to book page
