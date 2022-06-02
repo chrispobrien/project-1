@@ -9,7 +9,7 @@
 
 
 body {
-    background-image: url(../homepage/images/B38D9581-D993-4EC1-A6E1-195FD6294B7D.jpeg);
+    background-image: url(../assets/B38D9581-D993-4EC1-A6E1-195FD6294B7D.jpeg);
     background-repeat: none;
     background-size: cover;
     background-position: center;
@@ -47,21 +47,18 @@ header nav ul li{
 
 /*Jumbotron Block Styling*/
 .hero h1{
+  padding-top: 15px;
     justify-content: center;
     margin-top: 35px;
-    font-size: 70px;
-    color: #3f4716;
+    font-size: 42px;
+    color: #574e34;
     font-family: 'Courier New', Courier, monospace;
-    text-shadow:0px 0px 0 rgb(55,63,14),
-                0px -1px 0 rgb(46,54,5),
-                0px -2px 0 rgb(38,46,0),
-                0px -3px 0 rgb(30,38,0),
-                0px -4px 0 rgb(21,29,0),
-                0px -5px 0 rgb(13,21,0),
-                0px -6px  0 rgb(5,13,0),
-                0px -7px 6px rgba(0,0,0,0.84),
-                0px -7px 1px rgba(0,0,0,0.5),
-                0px 0px 6px rgba(0,0,0,.2);
+    text-shadow: 0px 0px 0 rgb(67,58,32),
+                 1px 1px 0 rgb(47,38,12),
+                 2px 2px  0 rgb(27,18,0),
+                 3px 3px 2px rgba(0,0,0,0.6),
+                 3px 3px 1px rgba(0,0,0,0.5),
+                 0px 0px 2px rgba(0,0,0,.2);
 }
 
 
