@@ -6,18 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <meta name="description" content="Book Review: Week 6 Coding Challenge, Columbia Engineering Coding Bootcamp">
-    <title>Book Reviews</title>
+    <link rel="stylesheet" href="./assets/css/contacts.css" />
+    <meta name="description" content="Book Explorer: Week 7-8 Coding Challenge, Columbia Engineering Coding Bootcamp">
+    <title>Book Explorer: Search Page</title>
 </head>
 
 <body class="bg-white text-slate-800">
+    <header>
+        <nav>
+			<ul>
+				<div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap; padding-top: 30px;">
+					<button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'index.html'" value='HOME'></input></button>
+					<button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'search.html'" value='BOOKS'></input></button>
+					<button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'contacts.html'" value='TEAM'></input></button>
+				</div>
+			</ul>
+		</nav>
+    </header>
 
-    <div class="flex flex-col">
+    <!-- <div class="flex flex-col">
         <div class="basis-full head">
-            <h1 class="text-2xl ml-2 font-black">Book Explorer</h1>
+
         </div>
-    </div>
+    </div> -->
 
     <div class="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-1 ml-2">
         <form class="bg-gray-400 rounded-lg">
@@ -39,7 +50,7 @@
         </form>
 
         <div class="grid lg:col-span-5 md:col-span-3 sm:col-span-1">
-            <span id="title" class="ml-4 text-xl"></span>
+            <span id="title" class="ml-4 leading-none text-3xl underline decoration-double text-center"></span>
             <div id="books" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 h-48">
 
             </div>

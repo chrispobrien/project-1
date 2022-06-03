@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="./assets/css/contacts.css" />
+	<meta
+		name="description"
+		content="Book Explorer: Week 7-8 Coding Challenge, Columbia Engineering Coding Bootcamp"/>
+	<title>Book Explorer: Contacts</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap; padding-top: 30px;">
+					<button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'index.html'" value='HOME'></input></button>
+					<button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'search.html'" value='BOOKS'></input></button>
+					<button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'contacts.html'" value='TEAM'></input></button>
+				</div>
+			</ul>
+		</nav>
+
+		<div class="hero" class="flex justify-center">
+			<h1 class="flex justify-center text-3xl mb-8">Contact Us</h1>
+		</div>
+	</header>
+
+	<section>
+		<div class="container mx-auto columns-1 md:columns-2 flex justify-center items-center justify-around">
+		<!--container for each of us-->
+			<div class="space-y-4">
+				<div id="card" class="box-border ml-32px h-20 w-64 border-4 border-indigo-500/50 hover:border-indigo-500/100 flex flex-col flex-wrap space-x-1 place-content-center rounded">
+					<!--GitHub icon that links to our webpage-->
+					<a href="https://github.com/chrispobrien/" class="mb-1 ml-1 mt-1 justify"><img src="./assets/images/github-icon.svg" alt="Image of Chris's GitHub page" /></a>
+					<a id="portfolio" class="" href="https://chrispobrien.github.io/02-Advanced-CSS-Portfolio/">Portfolio</a>
+					<a id="contact-info" class="text-slate-600/50 hover:text-black" href="mailto:chris.obrien57@gmail.com">Chris O'brien</a>
+				</div>
+
+				<div id="card" class="box-border h-20 w-64 border-4 border-blue-500/50 hover:border-blue-500/100 flex flex-col flex-wrap space-x-1 place-content-center rounded">
+					<a href="https://github.com/Coding291" class="mb-1 ml-1 mt-1"><img src="./assets/images/github-icon.svg" alt="Image of Muhammad's GitHub page" /></a>
+					<a id="portfolio" class="" href="https://coding291.github.io/Week2--Homework/">Portfolio</a>
+					<a id="contact-info" class="text-slate-600/50 hover:text-black" href="mailto:azam.muhammad2002@gmail.com">Muhammad Azam</a>
+				</div>
+			</div>
+
+			<div class="space-y-4 object-center">
+				<div id="card" class="box-border h-20 w-64 border-4 border-rose-500/50 hover:border-rose-500/100 flex flex-col flex-wrap space-x-1 place-content-center rounded">
+					<a href="https://github.com/DamarisCanales" class="mb-1 ml-1 mt-1"><img src="./assets/images/github-icon.svg" alt="Image of Damaris's GitHub page" /></a>
+					<a id="portfolio" class="" href="https://damariscanales.github.io/week2-challenge/">Portfolio</a>
+					<a id="contact-info" class="text-slate-600/50 hover:text-black" href="mailto:damariscanales@gmail.com">Damaris Canales</a>
+				</div>
+
+				<div id="card" class="box-border h-20 w-64 border-4 border-yellow-500/50 hover:border-yellow-500/100 flex flex-col flex-wrap space-x-1 place-content-center rounded">
+					<a href="https://github.com/Andrewplee" class="mb-1 ml-1 mt-1"><img src="./assets/images/github-icon.svg" alt="Image of Andrew's GitHub page" /></a>
+					<a id="portfolio" class="" href="https://andrewplee.github.io/Week-2-homework/">Portfolio</a>
+					<a id="contact-info" class="text-slate-600/50 hover:text-black" href="mailto:alee68@fordam.edu">Andrew Lee</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

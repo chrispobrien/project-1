@@ -1,5 +1,7 @@
 var nytAPIKey = 'DRc2qz1HkMLbgp0o1kkGqcDcAG1cTfg6';
+var mainWrapperEl = document.querySelector("#mainWrapper");
 var mainEl = document.querySelector("#main");
+var viewerCanvasEl = document.querySelector("#viewerCanvas");
 // book.html must be passed isbn13 parameter to identify the book to show
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -25,16 +27,24 @@ var localSourceData = {
     reviews: []
   };
 
+// This modal displays an error, if error, send the visitor back to the search page
 modalDismissEl.addEventListener('click',function(event) {
   modalEl.style.display = 'none';
+  window.location = "search.html";
 });
 
 // Once book is loaded, show details  
 var showBook = function() {
+    if (localSourceData.book.totalItems === 0) {
+        // No return value from Google Books
+        modalMessageEl.textContent = 'Sorry! No Google Books results returned.';
+        modalEl.style.display='block';
+        return;
+    };
     let title = document.querySelector("#title");
     title.textContent = localSourceData.book.items[0].volumeInfo.title;
     let subtitle = document.querySelector("#subtitle");
-    subtitle.textContent = localSourceData.book.items[0].volumeInfo.subtitle
+    subtitle.textContent = localSourceData.book.items[0].volumeInfo.subtitle;
     let pages = document.querySelector("#pages");
     pages.textContent = "Pages: "+localSourceData.book.items[0].volumeInfo.pageCount;
 
@@ -115,8 +125,12 @@ var showBook = function() {
 // This code is not used at the moment, it is to load a preview from Google
 var initViewer = function() {
     let viewer = new google.books.DefaultViewer(document.querySelector("#viewerCanvas"));
-    viewer.load('ISBN:'+isbn13, console.log("Book not found"));
-}
+    viewer.load('ISBN:'+isbn13, function() {
+        // Sadly no preview available
+        viewerCanvasEl.style.display = 'none';
+        mainWrapperEl.setAttribute("class","grid grid-cols-1");
+    });
+};
 
 // Inserts a script function to call Google Books API - callback function handleGBResponse
 var addGoogleBooks = function() {
@@ -129,8 +143,9 @@ var addGoogleBooks = function() {
 
 // Has some interesting data but mostly links
 var handleGBResponse = function(data) {
-    console.log(data);
-}
+    modalMessageEl.textContent = data;
+    modalEl.style.display='block';
+};
 
 // Show reviews if any
 var showReviews = function() {
@@ -157,9 +172,9 @@ var showReviews = function() {
             reviewsEl.appendChild(newReview);
         }
     }
-}
+};
 
-// Get review(s) from NY Times for this book
+// Get review(s) from NY Times for this book - often there are no reviews
 var getReviews = function() {
     let Url = `https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn13}&api-key=${nytAPIKey}`;
 
@@ -180,7 +195,7 @@ var getReviews = function() {
             // Fail silently
             localSourceData.reviews = {};
         })
-}
+};
 
 // Google Books API, gathers more info on this book
 var getBook = function() {
@@ -205,31 +220,38 @@ var getBook = function() {
         modalMessageEl.textContent = error;
         modalEl.style.display='block';
   });
-}
+};
 
 // So this localStorage should be filled whenever user browses to book page
 var loadLocalSourceData = function() {
-    //google.books.load();
-    //google.books.setOnLoadCallback(initViewer);
+    google.books.load();
+    google.books.setOnLoadCallback(initViewer);
+
     let lsd = localStorage.getItem("nyt");
     if (lsd) {
       localSourceData = JSON.parse(lsd);
+    } else {
+        // If no localStorage, refer visitor back to search page
+        window.location ="search.html";
     };
-    if (!lsd.book || lsd.book.items[0].volumeInfo.industryIdentifiers[0].identifier != isbn13) {
+    if (!lsd || !lsd.book || lsd.book.items[0].volumeInfo.industryIdentifiers[0].identifier != isbn13) {
         getBook();
         getReviews();
     } else {
         // Find and set book index within Bestseller list array by isbn13 number
         book = localSourceData.bookResults.books.findIndex(books => books.primary_isbn13 === isbn13);
         showBook();
+        addGoogleBooks();
     }
     book = localSourceData.bookResults.books.findIndex(books => books.primary_isbn13 === isbn13);
     //showBook();
     //addGoogleBooks();
 };
 
+// Save local data to localStorage
 var saveLocalSourceData = function() {
     localStorage.setItem("nyt",JSON.stringify(localSourceData));
 };
 
+// Start loading data, preferably from localStorage but from API if necessary
 loadLocalSourceData();
