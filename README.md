@@ -56,6 +56,8 @@ This creates the folder project-1 within which you will find the project files.
 
 Since this is a classroom exercise you may simply open the index.html file in a browser on your local machine.  The API key for accessing the New York Times site is included in the JavaScript, which is not best practice since it is exposed, but we have no server-side component in which to hide the API key.
 
+[![Book Explorer][screenshot]](./assets/images/book-explorer.png)
+
 ## Credits
 
 Project 1 Group 5 Team Members
@@ -68,7 +70,7 @@ Andrew P. Lee
 
 Chris O'Brien
 
-## Notes
+## Class Notes
 
 1. Spike: Research APIs
 
@@ -125,4 +127,5 @@ software development processes :
   user story : guide to what you will deliver, don't build things that are not useful to the user
     be totally focused on what the user wants
 
-  
+<!-- MARKDOWN LINKS & IMAGES -->
+[screenshot]: ./assets/images/book-explorer.png  

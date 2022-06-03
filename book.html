@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Google Books preview -->
     <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/css/contacts.css" />
     <meta name="description" content="Book Explorer: Week 7-8 Coding Challenge, Columbia Engineering Coding Bootcamp">
@@ -13,41 +15,48 @@
 </head>
 
 <body class="bg-white text-slate-800">
-<header>
-    <nav>
-        <ul>
-            <div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap; padding-top: 30px;">
-                <!--create onclick with JS if you want @Muhammad-->
-                <button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'index.html'" value='HOME'></input></button>
-                <button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'search.html'" value='BOOKS'></input></button>
-                <button class="button" role="button"><input type=button class='cursor-pointer' onClick="window.location = 'contacts.html'" value='TEAM'></input></button>
+    <header>
+        <nav>
+            <ul>
+                <div class="flex justify-evenly" style="flex-direction: row; flex-wrap: wrap; padding-top: 30px;">
+                    <!--create onclick with JS if you want @Muhammad-->
+                    <button class="button" role="button"><input type=button class='cursor-pointer'
+                            onClick="window.location = 'index.html'" value='HOME'></input></button>
+                    <button class="button" role="button"><input type=button class='cursor-pointer'
+                            onClick="window.location = 'search.html'" value='BOOKS'></input></button>
+                    <button class="button" role="button"><input type=button class='cursor-pointer'
+                            onClick="window.location = 'contacts.html'" value='TEAM'></input></button>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main page, wrapper is to show Google preview in 2nd column if window is large -->
+    <div id="mainWrapper" class="grid lg:grid-cols-2 sm:grid-cols-1">
+        <!-- Main book info -->
+        <div id="main" class="container mx-auto w-96">
+            <h1 id="title" class="text-center text-2xl">Loading...</h1>
+            <div id="subtitle" class="text-center text-lg"></div>
+            <div class="container mx-auto grid grid-cols-3">
+                <div id="pages" class="float-left text-sm text-slate-700"></div>
+                <div id="author" class="float-right text-sm text-slate-700 grid grid-cols-2 col-span-2 mx-auto"></div>
             </div>
-        </ul>
-    </nav>
-</header>
+            <div id="description" class="text-basis clear-both"></div>
+            <div id="reviews" class="text-basis clear-both"></div>
+            <div id="buyLinks" class="float-left mt-3">
 
-<div id="mainWrapper" class="grid lg:grid-cols-2 sm:grid-cols-1">
-    <div id="main" class="container mx-auto w-96">
-        <h1 id="title" class="text-center text-2xl">Loading...</h1>
-        <div id="subtitle" class="text-center text-lg"></div>
-        <div class="container mx-auto grid grid-cols-3">
-            <div id="pages" class="float-left text-sm text-slate-700"></div>
-            <div id="author" class="float-right text-sm text-slate-700 grid grid-cols-2 col-span-2 mx-auto"></div>
+            </div>
+            <div id="borrowLinks" class="float-right mt-3">
+                <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">New York Public
+                    Library</a>
+            </div>
         </div>
-        <div id="description" class="text-basis clear-both"></div>
-        <div id="reviews" class="text-basis clear-both"></div>
-        <div id="buyLinks" class="float-left mt-3">
-            
-        </div>
-        <div id="borrowLinks" class="float-right mt-3">
-            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">New York Public Library</a>
-        </div>
-    </div>
+        <!-- Google Books preview, if available -->
         <div id="viewerCanvas" class="clear-both w-full lg:h-screen sm:h-full">
-
         </div>
     </div>
 
+    <!-- Modal box to show errors or other info -->
     <div id="modal" class="fixed hidden inset-0 bg-slate-300 bg-opacity-50 overflow-y-auto h-full w-full">
         <div class="relative top-40 mx-auto my-auto border w-96 bg-white">
             <div id="modal-title" class="bg-red-400 px-2 text-white">Error</div>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/css/contacts.css" />
     <meta name="description" content="Book Explorer: Week 7-8 Coding Challenge, Columbia Engineering Coding Bootcamp">
@@ -12,6 +13,7 @@
 </head>
 
 <body class="bg-white text-slate-800">
+    <!-- Nav bar -->
     <header>
         <nav>
 			<ul>
@@ -24,13 +26,9 @@
 		</nav>
     </header>
 
-    <!-- <div class="flex flex-col">
-        <div class="basis-full head">
-
-        </div>
-    </div> -->
-
+    <!-- Main page -->
     <div class="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-1 ml-2">
+        <!-- Search form -->
         <form class="bg-gray-400 rounded-lg">
             <div class="mb-6 p-2">
                 <label for="date" class="block ml-2 mb-2 text-sm font-medium text-gray-900">Date:</label>
@@ -49,14 +47,18 @@
             </div>
         </form>
 
+        <!-- Book list area -->
         <div class="grid lg:col-span-5 md:col-span-3 sm:col-span-1">
+            <!-- Title of bestseller list-->
             <span id="title" class="ml-4 leading-none text-3xl underline decoration-double text-center"></span>
+            <!-- Books on bestseller list -->
             <div id="books" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 h-48">
 
             </div>
         </div>
     </div>
 
+    <!-- Modal for error display -->
     <div id="modal" class="fixed hidden inset-0 bg-slate-300 bg-opacity-50 overflow-y-auto h-full w-full">
         <div class="relative top-40 mx-auto my-auto border w-96 bg-white">
             <div id="modal-title" class="bg-red-400 px-2 text-white">Error</div>
