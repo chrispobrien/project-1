@@ -98,7 +98,7 @@ var showBook = function() {
         buyLinkDiv.setAttribute("class","mb-5");
         let buyLink = document.createElement("a");
         buyLink.setAttribute("href",localSourceData.bookResults.books[book].buy_links[i].url);
-        buyLink.setAttribute("class","bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4");
+        buyLink.setAttribute("class","bg-[#ff0000] hover:bg-[#ff2222] text-white font-bold py-2 px-4");
         buyLink.textContent = localSourceData.bookResults.books[book].buy_links[i].name;
         buyLinkDiv.appendChild(buyLink)
         buyLinksEl.appendChild(buyLinkDiv);
