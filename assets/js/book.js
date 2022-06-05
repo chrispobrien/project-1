@@ -98,7 +98,7 @@ var showBook = function() {
         buyLinkDiv.setAttribute("class","mb-5");
         let buyLink = document.createElement("a");
         buyLink.setAttribute("href",localSourceData.bookResults.books[book].buy_links[i].url);
-        buyLink.setAttribute("class","bg-[#ff0000] hover:bg-[#ff2222] text-white font-bold py-2 px-4");
+        buyLink.setAttribute("class","bg-[#3f47165e] hover:bg-[#5d4910b1] text-white font-bold py-2 px-4");
         buyLink.textContent = localSourceData.bookResults.books[book].buy_links[i].name;
         buyLinkDiv.appendChild(buyLink)
         buyLinksEl.appendChild(buyLinkDiv);
@@ -116,7 +116,7 @@ var showBook = function() {
     borrowLinkDiv.setAttribute("class","mb-5");
     let borrowLink = document.createElement("a");
     borrowLink.setAttribute("href",`https://browse.nypl.org/iii/encore/search/C__S${isbn13}__Orightresult__U?lang=eng&suite=def`);
-    borrowLink.setAttribute("class","bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4");
+    borrowLink.setAttribute("class","bg-[#3f47165e] hover:bg-[#5d4910b1] text-white font-bold py-2 px-4");
     borrowLink.textContent = "NY Public Library";
     borrowLinkDiv.appendChild(borrowLink)
     borrowLinksEl.appendChild(borrowLinkDiv);
