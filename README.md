@@ -42,6 +42,15 @@ THEN I am referred to the New York Public Library
     * search.html is the main search engine, it includes a form soliciting date and bestseller list, and shows books on that list for that date
     * book.html takes as a parameter the isbn13 number of a book, and displays more detailed information, as well as reviews, if any, and buy links from the New York Times, and one borrow link for the New York Public Library
 
+## Technologies Used
+
+* HTML
+* CSS
+* JavaScript
+* Tailwind CSS Framework
+* Server-side APIs (New York Times Bestseller List API, Google Books API)
+* Moment.js
+
 ## Installation
 
 Using git issue the command
